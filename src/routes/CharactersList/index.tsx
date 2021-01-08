@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import CharacterItem from "./CharacterItem";
 import { CharacterTypes } from "./types";
 import Pagination from "../../components/Pagination";
 import Search from "../../components/Search";
-import { BrowserRouter } from "react-router-dom";
 
 const charactersQuery = gql`
   query($page: Int!, $name: String!) {
@@ -25,6 +25,7 @@ const charactersQuery = gql`
 `;
 
 const CharactersList = () => {
+  const [activePage, setActivePage] = useState(1);
   const { loading, error, data, refetch } = useQuery(charactersQuery, {
     variables: { page: 1, name: "" },
   });
@@ -34,11 +35,14 @@ const CharactersList = () => {
   if (!data) return <div>Not found</div>;
 
   const { results, info } = data.characters;
-  const goPrevPage = () => refetch({ page: info.prev });
-  const goNextPage = () => refetch({ page: info.next });
-
   const submitSearch = (query: string) => {
     refetch({ name: query });
+  };
+
+  const onPageChange = (page: number) => {
+    console.log(page)
+    setActivePage(page);
+    refetch({ page });
   };
 
   return (
@@ -48,7 +52,10 @@ const CharactersList = () => {
       {results.map((result: CharacterTypes) => (
         <CharacterItem key={result.id} {...result} />
       ))}
-      <Pagination prevPage={goPrevPage} nextPage={goNextPage} />
+      <Pagination
+        onPageChange={onPageChange}
+        pages={info.pages}
+      />
     </div>
   );
 };

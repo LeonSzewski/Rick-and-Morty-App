@@ -1,13 +1,28 @@
+import ReactPaginate from "react-paginate";
+
 interface PaginationTypes {
-  prevPage: () => void;
-  nextPage: () => void;
+  onPageChange: (page: number) => void;
+  pages: number;
 }
 
-const Pagination = ({ prevPage, nextPage }: PaginationTypes) => {
+const Pagination = ({ onPageChange, pages }: PaginationTypes) => {
+  const onChange = ({ selected }: { selected: number }) =>
+    onPageChange(selected + 1);
+
   return (
     <div>
-      <div onClick={prevPage}>{"<"}</div>
-      <div onClick={nextPage}>{">"}</div>
+      <ReactPaginate
+        previousLabel={"previous"}
+        nextLabel={"next"}
+        breakLabel={"..."}
+        breakClassName={"break-me"}
+        pageCount={pages}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={onChange}
+        containerClassName={"pagination"}
+        activeClassName={"active"}
+      />
     </div>
   );
 };
