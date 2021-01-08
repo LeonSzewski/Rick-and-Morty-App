@@ -1,8 +1,10 @@
+import { useHistory } from "react-router-dom";
 import { CharacterTypes } from "./types";
 
-const CharacterItem = ({ name, species, image }: CharacterTypes) => {
+const CharacterItem = ({ id, name, species, image }: CharacterTypes) => {
+  const history = useHistory();
   return (
-    <div>
+    <div onClick={() => history.push(`/${id}`)}>
       <div>{name}</div>
       <div>{species}</div>
       <img src={image} alt="" />
