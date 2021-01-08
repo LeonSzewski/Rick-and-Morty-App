@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import CharacterItem from "./CharacterItem";
+import { useStore, useDispatch } from "react-redux";
 import { CharacterTypes } from "./types";
 import Pagination from "../../components/Pagination";
 import Search from "../../components/Search";
+import { setActivePage } from "../../redux/actions/listing";
 
 const charactersQuery = gql`
   query($page: Int!, $name: String!) {
@@ -25,9 +27,15 @@ const charactersQuery = gql`
 `;
 
 const CharactersList = () => {
-  const [activePage, setActivePage] = useState(1);
+  const {
+    listing: { activePage },
+  } = useStore().getState();
+  const dispatch = useDispatch();
+
+  console.log(activePage);
+
   const { loading, error, data, refetch } = useQuery(charactersQuery, {
-    variables: { page: 1, name: "" },
+    variables: { page: activePage, name: "" },
   });
 
   if (loading) return <div>Loading ...</div>;
@@ -40,8 +48,7 @@ const CharactersList = () => {
   };
 
   const onPageChange = (page: number) => {
-    console.log(page)
-    setActivePage(page);
+    dispatch(setActivePage(page));
     refetch({ page });
   };
 
@@ -52,10 +59,7 @@ const CharactersList = () => {
       {results.map((result: CharacterTypes) => (
         <CharacterItem key={result.id} {...result} />
       ))}
-      <Pagination
-        onPageChange={onPageChange}
-        pages={info.pages}
-      />
+      <Pagination onPageChange={onPageChange} pages={info.pages} />
     </div>
   );
 };
