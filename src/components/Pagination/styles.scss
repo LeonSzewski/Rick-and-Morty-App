@@ -1,0 +1,58 @@
+@import "../../utils/styles/colors.scss";
+@import "../../utils/styles/mixins.scss";
+
+$radius: 5px;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 50px auto;
+  padding: 0;
+
+  li {
+    &:not(.previous):not(.next):not(.pagination__active) {
+      display: none;
+    }
+
+    @include sm {
+      display: block !important;
+    }
+
+    a {
+      cursor: pointer;
+      font-size: 18px;
+      padding: 25px;
+      background-color: $primaryColor;
+
+      &:focus {
+        outline: none;
+      }
+
+      @include sm {
+        padding: 15px;
+      }
+
+      @include lg {
+        &:hover {
+          background-color: $secondaryColor;
+        }
+      }
+    }
+    &:first-child {
+      a {
+        border-radius: $radius 0 0 $radius;
+      }
+    }
+
+    &:last-child {
+      a {
+        border-radius: 0 $radius $radius 0;
+      }
+    }
+  }
+
+  & &__active a {
+    background-color: $secondaryColor;
+  }
+}

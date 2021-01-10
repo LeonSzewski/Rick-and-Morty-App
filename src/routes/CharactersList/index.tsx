@@ -49,7 +49,7 @@ const CharactersList = () => {
 
   const onPageChange = (page: number) => {
     dispatch(setActivePage(page));
-    refetch({ page });
+    refetch({ page: page });
   };
 
   return (
@@ -62,11 +62,17 @@ const CharactersList = () => {
           <Search submit={submitSearch} />
         </div>
       </div>
-      <div>lista postaci</div>
-      {results.map((result: CharacterTypes) => (
-        <CharacterItem key={result.id} {...result} />
-      ))}
-      <Pagination onPageChange={onPageChange} pages={info.pages} />
+      <h2>Lista postaci</h2>
+      <ul className="character-list">
+        {results.map((result: CharacterTypes) => (
+          <CharacterItem key={result.id} {...result} />
+        ))}
+      </ul>
+      <Pagination
+        onPageChange={onPageChange}
+        pages={info.pages}
+        activePage={activePage}
+      />
     </div>
   );
 };
