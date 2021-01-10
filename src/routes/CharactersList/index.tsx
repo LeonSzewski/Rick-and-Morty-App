@@ -59,9 +59,7 @@ const CharactersList = () => {
           <Image src={background} />
         </div>
         <div className="main-header__search">
-          <div className="search">
-            <Search submit={submitSearch} />
-          </div>
+          <Search submit={submitSearch} />
         </div>
       </div>
       <div>lista postaci</div>

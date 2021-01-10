@@ -1,4 +1,5 @@
 import { FormEvent, ChangeEvent, useState } from "react";
+import "./styles.scss";
 
 interface SearchTypes {
   submit: (query: string) => void;
@@ -17,13 +18,15 @@ const Search = ({ submit }: SearchTypes) => {
   };
 
   return (
-    <form onSubmit={submitSearch}>
-      <input
-        type="text"
-        placeholder="Search for..."
-        onChange={handleInputChange}
-      />
-    </form>
+    <div className="search">
+      <form role="search" onSubmit={submitSearch}>
+        <input
+          type="search"
+          placeholder="Znajdź postać ..."
+          onChange={handleInputChange}
+        />
+      </form>
+    </div>
   );
 };
 
