@@ -1,0 +1,33 @@
+@import "../../utils/styles/mixins.scss";
+
+.main-header {
+  position: relative;
+
+  &__background {
+    width: 100&;
+  }
+
+  &__search {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+
+    @include md {
+      align-items: center;
+      justify-content: flex-end;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+  }
+}
+
+.search {
+  margin-right: 0;
+
+  @include md {
+    margin-right: 10%;
+  }
+}

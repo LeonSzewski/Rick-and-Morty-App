@@ -1,11 +1,13 @@
-import { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import CharacterItem from "./CharacterItem";
 import { useStore, useDispatch } from "react-redux";
 import { CharacterTypes } from "./types";
 import Pagination from "../../components/Pagination";
 import Search from "../../components/Search";
+import Image from "../../components/Image";
 import { setActivePage } from "../../redux/actions/listing";
+import background from "./background.png";
+import "./styles.scss";
 
 const charactersQuery = gql`
   query($page: Int!, $name: String!) {
@@ -52,8 +54,17 @@ const CharactersList = () => {
 
   return (
     <div>
+      <div className="main-header">
+        <div className="main-header__background">
+          <Image src={background} />
+        </div>
+        <div className="main-header__search">
+          <div className="search">
+            <Search submit={submitSearch} />
+          </div>
+        </div>
+      </div>
       <div>lista postaci</div>
-      <Search submit={submitSearch} />
       {results.map((result: CharacterTypes) => (
         <CharacterItem key={result.id} {...result} />
       ))}
