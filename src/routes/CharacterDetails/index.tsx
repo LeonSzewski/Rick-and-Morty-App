@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import { useHistory, useParams } from "react-router";
+import Image from "../../components/Image";
 
 type CharacterId = { id: string };
 type EpisodeType = CharacterId & { name: string };
@@ -48,7 +49,7 @@ const CharacterDetails = () => {
     <div>
       <div onClick={() => history.goBack()}>Wstecz</div>
       <div>
-        <img src={image} alt="" />
+        <Image src={image} />
         <div>{name}</div>
         <div>{species}</div>
         <div>{gender}</div>

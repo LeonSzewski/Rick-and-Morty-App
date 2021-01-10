@@ -6,7 +6,7 @@ interface ImageTypes {
   alt?: string;
 }
 
-const Image = ({ src, alt }: ImageTypes) => {
+const Image = ({ src, alt = "" }: ImageTypes) => {
   const [loaded, setLoaded] = useState(false);
 
   return (

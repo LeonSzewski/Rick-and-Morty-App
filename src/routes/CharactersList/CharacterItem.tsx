@@ -8,7 +8,7 @@ const CharacterItem = ({ id, name, species, image }: CharacterTypes) => {
     <div onClick={() => history.push(`/${id}`)}>
       <div>{name}</div>
       <div>{species}</div>
-      <Image src={image} alt="" />
+      <Image src={image} />
     </div>
   );
 };
