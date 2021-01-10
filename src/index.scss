@@ -1,14 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 @import "utils/styles/colors.scss";
+@import "utils/styles/global.scss";
+@import "utils/styles/mixins.scss";
 
-html {
-  height: 100%;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  height: 100%;
-  font-family: "Roboto", sans-serif;
+  font-family: "Lato", sans-serif;
   color: $fontColor;
   background-color: $backgroundColor;
   -webkit-font-smoothing: antialiased;
@@ -17,4 +20,16 @@ body {
 
 img {
   max-width: 100%;
+}
+
+.container {
+  margin: 0 10px;
+  max-width: $maxContainerWidth;
+  background-color: $containerBackgroundColor;
+  min-height: 100vh;
+  overflow: hidden;
+
+  @include xl {
+    margin: 0 auto;
+  }
 }

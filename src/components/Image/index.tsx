@@ -10,11 +10,15 @@ const Image = ({ src, alt = "" }: ImageTypes) => {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <img
-      src={loaded ? src : placeholder}
-      alt={alt}
-      onLoad={() => setLoaded(true)}
-    />
+    <div>
+      {!loaded && <img src={placeholder} style={{ width: "auto" }} alt={alt} />}
+      <img
+        src={loaded ? src : placeholder}
+        style={{ display: !loaded ? "none" : "block" }}
+        alt={alt}
+        onLoad={() => setLoaded(true)}
+      />
+    </div>
   );
 };
 

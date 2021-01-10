@@ -58,21 +58,22 @@ const CharactersList = () => {
         <div className="main-header__background">
           <Image src={background} />
         </div>
+      </div>
+      <div className="character-list__container container">
         <div className="main-header__search">
           <Search submit={submitSearch} />
         </div>
+        <ul className="character-list">
+          {results.map((result: CharacterTypes) => (
+            <CharacterItem key={result.id} {...result} />
+          ))}
+        </ul>
+        <Pagination
+          onPageChange={onPageChange}
+          pages={info.pages}
+          activePage={activePage}
+        />
       </div>
-      <h2>Lista postaci</h2>
-      <ul className="character-list">
-        {results.map((result: CharacterTypes) => (
-          <CharacterItem key={result.id} {...result} />
-        ))}
-      </ul>
-      <Pagination
-        onPageChange={onPageChange}
-        pages={info.pages}
-        activePage={activePage}
-      />
     </div>
   );
 };

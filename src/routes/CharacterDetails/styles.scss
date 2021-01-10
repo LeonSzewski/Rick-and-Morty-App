@@ -1,0 +1,63 @@
+@import "../../utils/styles/mixins.scss";
+@import "../../utils/styles/colors.scss";
+@import "../../utils/styles/global.scss";
+
+$radius: 5px;
+
+.character-details {
+  &__container {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__image {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $primaryColor;
+    margin: 10px;
+    border-radius: $radius;
+    img {
+      border-radius: $radius $radius 0 0;
+    }
+  }
+
+  &__name {
+    font-size: 22px;
+    margin: 10px 0 5px 0;
+    word-wrap: break-word;
+    text-align: center;
+  }
+
+  &__detail {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px;
+
+    span {
+      font-weight: normal;
+    }
+  }
+
+  &__episodes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &-container {
+      margin: 50px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__episode {
+    padding: 10px;
+    border-radius: $radius;
+    margin: 10px;
+    background-color: $primaryColor;
+  }
+}

@@ -3,41 +3,35 @@
 @import "../../utils/styles/global.scss";
 
 $itemRadius: 5px;
+$containerRadius: 10px;
 
 .main-header {
-  position: relative;
-
-  &__background {
-    width: 100&;
+  &__background img {
+    width: 100%;
   }
 
   &__search {
     margin: 30px 0;
     display: flex;
     justify-content: center;
-
-    @include md {
-      margin-right: 10%;
-      align-items: center;
-      justify-content: flex-end;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-    }
   }
 }
 
 .character-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
   grid-gap: 10px;
   list-style: none;
   padding: 0;
   max-width: $maxContainerWidth;
   margin: 0 auto;
+
+  &__container {
+    border-radius: $containerRadius $containerRadius 0 0;
+    margin-top: 50px;
+    padding: 20px;
+  }
 }
 
 .character {
@@ -56,8 +50,9 @@ $itemRadius: 5px;
   }
 
   &__image {
-    position: relative;
+    width: 100%;
     img {
+      width: 100%;
       border-radius: $itemRadius $itemRadius 0 0;
     }
   }
