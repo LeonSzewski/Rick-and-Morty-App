@@ -32,8 +32,6 @@ const CharactersList = () => {
   } = useStore().getState();
   const dispatch = useDispatch();
 
-  console.log(activePage);
-
   const { loading, error, data, refetch } = useQuery(charactersQuery, {
     variables: { page: activePage, name: "" },
   });

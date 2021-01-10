@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom";
+import Image from "../../components/Image";
 import { CharacterTypes } from "./types";
 
 const CharacterItem = ({ id, name, species, image }: CharacterTypes) => {
@@ -7,7 +8,7 @@ const CharacterItem = ({ id, name, species, image }: CharacterTypes) => {
     <div onClick={() => history.push(`/${id}`)}>
       <div>{name}</div>
       <div>{species}</div>
-      <img src={image} alt="" />
+      <Image src={image} alt="" />
     </div>
   );
 };
