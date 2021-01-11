@@ -3,6 +3,8 @@
 @import "utils/styles/global.scss";
 @import "utils/styles/mixins.scss";
 
+$containerRadius: 10px;
+
 *,
 *:before,
 *:after {
@@ -24,12 +26,14 @@ img {
 
 .container {
   margin: 0 10px;
+  margin-bottom: 20px;
   max-width: $maxContainerWidth;
   background-color: $containerBackgroundColor;
-  min-height: 100vh;
   overflow: hidden;
+  border-radius: $containerRadius;
 
   @include xl {
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
