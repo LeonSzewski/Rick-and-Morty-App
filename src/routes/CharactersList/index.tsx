@@ -67,7 +67,7 @@ const CharactersList = () => {
           <Image src={background} />
         </div>
         <div className="main-header__scrollTo">
-          <div className="arrow bounce"></div>
+          <div className="arrow bounce" />
         </div>
       </div>
       <div className="character-list__container container" ref={myRef}>

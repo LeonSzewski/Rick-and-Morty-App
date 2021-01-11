@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import { useParams } from "react-router";
+import Error from "../../components/Error";
 import Image from "../../components/Image";
 import Loader from "../../components/Loader";
 import ScreenContainer from "../../containers/ScreenContainer";
@@ -35,7 +36,7 @@ const CharacterDetails = () => {
   });
 
   if (loading) return <Loader fullscreen />;
-  if (!data || error) return <div>Error</div>;
+  if (!data || error) return <Error />;
 
   const {
     name,

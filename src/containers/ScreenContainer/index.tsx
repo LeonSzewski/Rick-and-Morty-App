@@ -19,7 +19,6 @@ const ScreenContainer = ({ title, children }: ScreenContainerTypes) => {
         >
           Wstecz
         </div>
-
         <h1 className="screen-container__screen-title">{title}</h1>
       </div>
       <div className="screen-container__children">{children}</div>
